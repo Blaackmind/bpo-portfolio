@@ -1,3 +1,8 @@
+# Python (ambiente criado para servir a pagina localmente)
+.venv/
+venv/
+__pycache__/
+
 # IDE / OS
 .idea/
 .vscode/
