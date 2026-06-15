@@ -1,16 +1,25 @@
 # bpo-portfolio
 
-Pagina de apresentacao pessoal, responsiva, em HTML, CSS e JavaScript puro.
-Reune os seis projetos do portfolio, a stack e os contatos. Pronta para
-publicacao no GitHub Pages.
+Pagina de apresentacao pessoal de Amanda Kelory (Full Stack e QA), responsiva,
+em HTML, CSS e JavaScript. Reune os seis projetos do portfolio, skills,
+trajetoria e contato. Pronta para publicacao no GitHub Pages.
 
-## Caracteristicas
+## Estrutura
 
-- Fundo animado em canvas com campo de estrelas.
-- Efeito de digitacao no cabecalho.
-- Cards de projeto gerados por JavaScript a partir de uma lista.
-- Secao com outros repositorios publicos do GitHub.
-- Layout responsivo, sem dependencias e sem etapa de build.
+```
+bpo-portfolio/
+  index.html          estrutura e conteudo da pagina
+  styles.css          estilos (tema grid preto e branco)
+  site.js             interacoes: typing, filtros, reveal, copiar e-mail
+  tweaks.jsx          painel de edicao ao vivo (React)
+  tweaks-panel.jsx    componentes do painel de edicao
+  retrato.png         imagem do retrato exibida no topo
+```
+
+## Secoes
+
+Hero, dev e QA, sobre, skills, projetos (com filtros), trajetoria, depoimentos e
+contato.
 
 ## Como executar
 
@@ -22,17 +31,20 @@ python -m http.server 8000
 
 Depois acesse http://localhost:8000.
 
+## Personalizar
+
+- O retrato e o arquivo retrato.png na raiz; troque o arquivo para mudar a foto.
+- Os projetos ficam na secao com id projetos, no index.html.
+- As secoes de trajetoria e depoimentos contem campos a preencher com dados
+  reais.
+- O painel de tweaks permite experimentar estilo, fonte, cor de acento e grade.
+
 ## Publicar no GitHub Pages
 
 1. Suba o conteudo para um repositorio.
 2. Em Settings, depois Pages, selecione a branch main e a pasta raiz.
 3. A pagina ficara disponivel em https://Blaackmind.github.io/bpo-portfolio/.
 
-## Personalizar
-
-No arquivo index.html, edite o array projetos para alterar os cards, o array
-outros para a lista de repositorios e as variaveis CSS em :root para as cores.
-
 ## Tecnologias
 
-HTML, CSS, JavaScript.
+HTML, CSS, JavaScript, React (apenas no painel de edicao).

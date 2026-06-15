@@ -1,342 +1,303 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="grid">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amanda Kelory - Full Stack · QA · Automação · Dados</title>
-  <meta name="description" content="Portfólio de Amanda Kelory (Blaackmind): Full Stack Developer, QA e Automação. Projetos em Python, Java, Angular, Selenium e Cypress." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --space:#08040f;
-      --space2:#0e0720;
-      --violet:#9d4edd;
-      --violet-l:#c77dff;
-      --pale:#e0aaff;
-      --pink:#ff79c6;
-      --text:#ece8f5;
-      --muted:#9d92b8;
-      --glass:rgba(157,78,221,.06);
-      --line:rgba(199,125,255,.18);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'Space Grotesk',system-ui,sans-serif;
-      background:var(--space);color:var(--text);line-height:1.65;overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    code,.mono{font-family:'Fira Code',monospace}
-    .wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem;position:relative;z-index:2}
-
-    #stars{position:fixed;inset:0;z-index:0;display:block}
-    .nebula{position:fixed;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0;
-      pointer-events:none;animation:float 18s ease-in-out infinite}
-    .nebula.a{width:520px;height:520px;top:-120px;left:-100px;
-      background:radial-gradient(circle,rgba(157,78,221,.55),transparent 70%)}
-    .nebula.b{width:460px;height:460px;top:30%;right:-140px;
-      background:radial-gradient(circle,rgba(255,121,198,.35),transparent 70%);animation-delay:-6s}
-    .nebula.c{width:420px;height:420px;bottom:-120px;left:25%;
-      background:radial-gradient(circle,rgba(199,125,255,.4),transparent 70%);animation-delay:-11s}
-    @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-30px)}}
-
-    nav{position:sticky;top:0;z-index:20;
-      background:rgba(8,4,15,.6);backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--line)}
-    nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
-    nav .logo{font-weight:700;letter-spacing:.5px}
-    nav .logo b{color:var(--violet-l)}
-    nav .links{display:flex;gap:1.6rem}
-    nav .links a{color:var(--muted);font-size:.9rem;font-family:'Fira Code',monospace;transition:.2s}
-    nav .links a:hover{color:var(--pale);text-shadow:0 0 12px var(--violet)}
-
-    header.hero{text-align:center;padding:5.5rem 0 4rem}
-    .avatar{width:128px;height:128px;border-radius:50%;object-fit:cover;
-      border:2px solid var(--violet);padding:4px;
-      box-shadow:0 0 40px rgba(157,78,221,.6),inset 0 0 20px rgba(157,78,221,.3);
-      animation:pulse 4s ease-in-out infinite}
-    @keyframes pulse{0%,100%{box-shadow:0 0 35px rgba(157,78,221,.5)}50%{box-shadow:0 0 60px rgba(199,125,255,.8)}}
-    .hello{font-family:'Fira Code',monospace;color:var(--violet-l);font-size:.95rem;margin-top:1.4rem;letter-spacing:1px}
-    .hero h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.08;margin:.5rem 0 .2rem;font-weight:700;
-      background:linear-gradient(120deg,#fff 10%,var(--pale) 45%,var(--violet) 90%);
-      -webkit-background-clip:text;background-clip:text;color:transparent}
-    .typed{font-family:'Fira Code',monospace;color:var(--text);font-size:clamp(1rem,2.6vw,1.35rem);
-      min-height:1.6em;margin-top:.4rem}
-    .typed .cursor{color:var(--violet-l);animation:blink 1s step-end infinite}
-    @keyframes blink{50%{opacity:0}}
-    .hero p.lead{color:var(--muted);max-width:600px;margin:1.4rem auto 0;font-size:1.05rem}
-    .tags{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1.8rem}
-    .tag{font-family:'Fira Code',monospace;font-size:.78rem;color:var(--pale);
-      background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:.35rem .85rem}
-    .cta-row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:2.2rem}
-    .cta{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;padding:.8rem 1.6rem;border-radius:12px;transition:.25s}
-    .cta.primary{background:linear-gradient(120deg,var(--violet),var(--pink));color:#fff;
-      box-shadow:0 8px 30px rgba(157,78,221,.45)}
-    .cta.primary:hover{transform:translateY(-3px);box-shadow:0 12px 38px rgba(255,121,198,.5)}
-    .cta.ghost{border:1px solid var(--line);color:var(--pale)}
-    .cta.ghost:hover{border-color:var(--violet-l);background:var(--glass)}
-
-    section{padding:4.5rem 0}
-    .eyebrow{font-family:'Fira Code',monospace;color:var(--violet-l);font-size:.85rem;letter-spacing:1px}
-    h2{font-size:2rem;margin:.3rem 0 .4rem;font-weight:700}
-    .sub{color:var(--muted);margin-bottom:2.4rem;max-width:640px}
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
-    .proj{position:relative;background:linear-gradient(160deg,rgba(157,78,221,.08),rgba(14,7,32,.4));
-      border:1px solid var(--line);border-radius:18px;padding:1.6rem;display:flex;flex-direction:column;
-      backdrop-filter:blur(8px);overflow:hidden;transition:.3s}
-    .proj::before{content:"";position:absolute;inset:0;border-radius:18px;padding:1px;
-      background:linear-gradient(140deg,var(--violet),transparent 40%);
-      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-      -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:.3s}
-    .proj:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(157,78,221,.3)}
-    .proj:hover::before{opacity:1}
-    .proj .num{font-family:'Fira Code',monospace;font-size:.75rem;color:var(--violet-l);letter-spacing:1px}
-    .proj .focus{font-size:.85rem;color:var(--pink);font-weight:600;margin:.5rem 0 .3rem}
-    .proj h3{font-size:1.25rem;font-family:'Fira Code',monospace}
-    .proj p{color:var(--muted);font-size:.92rem;flex:1;margin-top:.5rem}
-    .proj .stack{display:flex;gap:.4rem;flex-wrap:wrap;margin:1.1rem 0}
-    .proj .stack span{font-family:'Fira Code',monospace;font-size:.72rem;color:var(--pale);
-      background:rgba(157,78,221,.1);border:1px solid var(--line);border-radius:6px;padding:.2rem .55rem}
-    .proj a.repo{margin-top:auto;color:var(--violet-l);font-weight:600;font-size:.88rem;
-      font-family:'Fira Code',monospace;transition:.2s}
-    .proj a.repo:hover{color:var(--pink);letter-spacing:.5px}
-
-    .minigrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
-    .mini{display:flex;flex-direction:column;gap:.5rem;padding:1.15rem 1.25rem;border-radius:14px;
-      border:1px solid var(--line);background:rgba(157,78,221,.05);backdrop-filter:blur(6px);transition:.25s}
-    .mini:hover{transform:translateY(-4px);border-color:var(--violet-l);background:rgba(157,78,221,.1);
-      box-shadow:0 14px 34px rgba(157,78,221,.25)}
-    .mini .top{display:flex;align-items:center;gap:.5rem}
-    .mini .dot{width:9px;height:9px;border-radius:50%;flex:none;
-      background:var(--violet-l);box-shadow:0 0 8px var(--violet-l)}
-    .mini h4{font-family:'Fira Code',monospace;font-size:.95rem;color:var(--text);word-break:break-word}
-    .mini p{color:var(--muted);font-size:.82rem;flex:1}
-    .mini .lang{font-family:'Fira Code',monospace;font-size:.7rem;color:var(--pale);
-      align-self:flex-start;background:rgba(157,78,221,.12);border:1px solid var(--line);
-      border-radius:6px;padding:.15rem .5rem}
-
-    .stackgrid{display:flex;flex-wrap:wrap;gap:.7rem}
-    .stackgrid span{font-family:'Fira Code',monospace;font-size:.85rem;color:var(--text);
-      background:var(--glass);border:1px solid var(--line);border-radius:10px;padding:.55rem 1.1rem;transition:.2s}
-    .stackgrid span:hover{border-color:var(--violet-l);color:var(--pale);box-shadow:0 0 18px rgba(157,78,221,.35)}
-
-    .contact{position:relative;text-align:center;border:1px solid var(--line);border-radius:24px;
-      padding:3.2rem 1.5rem;background:linear-gradient(160deg,rgba(157,78,221,.12),rgba(14,7,32,.5));
-      backdrop-filter:blur(10px);overflow:hidden}
-    .contact h2{background:linear-gradient(120deg,#fff,var(--pale));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .contact .btns{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem}
-    .contact a.btn{font-family:'Fira Code',monospace;font-size:.9rem;display:inline-flex;align-items:center;gap:.5rem;
-      padding:.75rem 1.4rem;border:1px solid var(--line);border-radius:12px;color:var(--pale);transition:.25s}
-    .contact a.btn:hover{border-color:var(--violet-l);background:var(--glass);transform:translateY(-2px);box-shadow:0 0 22px rgba(157,78,221,.4)}
-
-    footer{border-top:1px solid var(--line);padding:2.2rem 0;text-align:center;color:var(--muted);
-      font-size:.85rem;font-family:'Fira Code',monospace}
-    footer b{color:var(--violet-l)}
-
-    .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
-    .reveal.show{opacity:1;transform:none}
-
-    @media(max-width:560px){
-      nav .links{gap:1rem}
-      .avatar{width:104px;height:104px}
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amanda Kelory — Full Stack &amp; QA</title>
+<meta name="description" content="Portfólio de Amanda Kelory (Blaackmind): desenvolvedora Full Stack e QA. Java, Spring Boot, Angular, Selenium, Cypress." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,16..72,400;0,16..72,500;0,16..72,600;1,16..72,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <canvas id="stars"></canvas>
-  <div class="nebula a"></div>
-  <div class="nebula b"></div>
-  <div class="nebula c"></div>
+<div class="bg-grid" aria-hidden="true"></div>
 
-  <nav>
-    <div class="wrap">
-      <div class="logo">amanda<b>.</b>kelory</div>
-      <div class="links">
+<div id="page">
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="wrap nav__inner">
+      <a href="#top" class="brand"><span class="brand__dot"></span>amanda<b>.</b>kelory</a>
+      <div class="nav__links" id="navlinks">
+        <a href="#sobre">// sobre</a>
+        <a href="#skills">// skills</a>
         <a href="#projetos">// projetos</a>
-        <a href="#github">// github</a>
-        <a href="#stack">// stack</a>
-        <a href="#contato">// contato</a>
+        <a href="#trajetoria">// trajetória</a>
+        <a href="#contato" class="nav__cta">contato ↗</a>
       </div>
+      <button class="nav__burger" id="burger" aria-label="Menu">≡</button>
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="wrap">
-      <img class="avatar" src="https://avatars.githubusercontent.com/u/153823895?v=4"
-           alt="Foto de Amanda Kelory" onerror="this.style.display='none'">
-      <p class="hello">&gt; olá, mundo. meu nome é</p>
-      <h1>Amanda Kelory</h1>
-      <div class="typed mono"><span id="typed"></span><span class="cursor">▍</span></div>
-      <p class="lead">Desenvolvedora Full Stack &amp; QA apaixonada por tecnologia.
-        Automatizo processos, construo APIs e dashboards, e testo de verdade -
-        sempre explorando novas tecnologias no universo do código.</p>
-      <div class="tags">
-        <span class="tag">Python</span><span class="tag">Java · Spring</span>
-        <span class="tag">Angular</span><span class="tag">Selenium</span>
-        <span class="tag">Cypress</span><span class="tag">Flask</span>
-        <span class="tag">MySQL</span>
+  <!-- HERO -->
+  <header class="hero wrap" id="top" data-screen-label="Hero">
+    <div class="hero__grid">
+      <div class="reveal">
+        <p class="hero__eyebrow"><span class="prompt">&gt;</span> olá, mundo — meu nome é</p>
+        <h1>Amanda<br />Kelory</h1>
+        <p class="hero__role"><span class="typed" id="typed"></span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="hero__lead">Desenvolvedora <b>Full Stack</b> &amp; <b>QA</b> apaixonada por tecnologia. Construo aplicações de ponta a ponta — e <b>testo cada uma delas</b>.</p>
+        <ul class="chips">
+          <li class="chip">Java</li>
+          <li class="chip">Spring Boot</li>
+          <li class="chip">Angular</li>
+          <li class="chip">TypeScript</li>
+          <li class="chip">Selenium</li>
+          <li class="chip">Cypress</li>
+          <li class="chip">Python</li>
+        </ul>
+        <div class="hero__cta">
+          <a href="#projetos" class="btn btn--solid">Explorar projetos →</a>
+          <a href="https://github.com/Blaackmind" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/amanda-kelory-a27a181b0/" target="_blank" rel="noopener" class="btn">LinkedIn ↗</a>
+        </div>
       </div>
-      <div class="cta-row">
-        <a class="cta primary" href="#projetos">Explorar projetos</a>
-        <a class="cta ghost" href="https://github.com/Blaackmind" target="_blank" rel="noopener">GitHub ↗</a>
+
+      <div class="reveal portrait" aria-label="Retrato de Amanda Kelory">
+        <div class="portrait__art" style="background-image:url('retrato.png');background-size:cover;background-position:center top;"></div>
+        <div class="portrait__frame"></div>
+        <span class="portrait__corner tl"></span>
+        <span class="portrait__corner br"></span>
+        <div class="portrait__seal">
+          <span>&lt;dev/&gt;</span>
+          <span>[ qa ]</span>
+        </div>
       </div>
     </div>
   </header>
 
-  <section id="projetos">
-    <div class="wrap">
-      <p class="eyebrow">// 06 repositórios</p>
-      <h2>Projetos em órbita</h2>
-      <p class="sub">Seis projetos cobrindo meus quatro focos: automação, desenvolvimento, QA e dados.</p>
-      <div class="grid" id="grid"></div>
-    </div>
-  </section>
-
-  <section id="github">
-    <div class="wrap">
-      <p class="eyebrow">// mais no github</p>
-      <h2>Constelação de projetos</h2>
-      <p class="sub">Outros repositórios públicos: apps com integração de APIs, Laravel, jogos e CRUDs em JavaScript.</p>
-      <div class="minigrid" id="minigrid"></div>
-      <div style="text-align:center;margin-top:2.4rem">
-        <a class="cta ghost" href="https://github.com/Blaackmind?tab=repositories" target="_blank" rel="noopener">ver todos os repositórios ↗</a>
+  <!-- DUAL dev + qa -->
+  <section class="section--tight wrap" aria-label="Dev e QA">
+    <div class="dual reveal">
+      <div class="dual__cell">
+        <p class="dual__tag">&lt;dev/&gt; — eu construo</p>
+        <h3 class="dual__title">Crio o produto</h3>
+        <p>APIs em Java &amp; Spring Boot, front-ends em Angular, integrações e dashboards. Do banco de dados à interface, ponta a ponta.</p>
+      </div>
+      <div class="dual__cell">
+        <p class="dual__tag">[ qa ] — eu garanto</p>
+        <h3 class="dual__title">Garanto a qualidade</h3>
+        <p>Automação com Selenium, Cypress e pytest, testes manuais e CI. Quebro de propósito para entregar com confiança.</p>
       </div>
     </div>
   </section>
 
-  <section id="stack">
-    <div class="wrap">
-      <p class="eyebrow">// toolbox</p>
-      <h2>Stack &amp; ferramentas</h2>
-      <p class="sub">Tecnologias que uso para tirar ideias do papel.</p>
-      <div class="stackgrid">
-        <span>Python</span><span>Flask</span><span>SQLAlchemy</span><span>Selenium</span>
-        <span>Cypress</span><span>pytest</span><span>Java</span><span>Spring Boot</span>
-        <span>JPA / Hibernate</span><span>MySQL</span><span>Angular</span>
-        <span>TypeScript</span><span>RxJS</span><span>HTML / CSS / JS</span>
-        <span>Git &amp; GitHub</span><span>CI · GitHub Actions</span>
+  <!-- SOBRE -->
+  <section class="section wrap" id="sobre" data-screen-label="Sobre">
+    <div class="about__grid">
+      <div class="reveal">
+        <p class="eyebrow">sobre mim</p>
+        <h2 class="section-title">Duas faces da mesma desenvolvedora.</h2>
+      </div>
+      <div class="about__body reveal">
+        <p>Sou <b>Amanda Kelory</b> — desenvolvedora Full Stack Jr e QA/Tester apaixonada por tecnologia e sempre em busca de novos conhecimentos.</p>
+        <p>Gosto de colaborar em projetos desafiadores e estou constantemente explorando novas tecnologias para expandir meu conjunto de habilidades. Escrevo código <b>e</b> escrevo os testes que o mantêm de pé.</p>
+        <ul class="about__meta">
+          <li><span class="k">// foco</span><span class="v">Full Stack · QA · Automação · Dados</span></li>
+          <li><span class="k">// agora</span><span class="v">IBM — Hortolândia, SP</span></li>
+          <li><span class="k">// estudando</span><span class="v">Spring Boot, Microservices, Quantum</span></li>
+          <li><span class="k">// linguagens</span><span class="v">Java, TypeScript, Python, PHP</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="contato">
-    <div class="wrap">
-      <div class="contact">
-        <p class="eyebrow">// let's connect</p>
-        <h2>Vamos conversar?</h2>
-        <p class="sub" style="margin:.6rem auto 0">Aberta a oportunidades em automação, desenvolvimento, QA e dados.</p>
-        <div class="btns">
-          <a class="btn" href="mailto:manda.lemes72@gmail.com">manda.lemes72@gmail.com</a>
-          <a class="btn" href="https://github.com/Blaackmind" target="_blank" rel="noopener">⌨ GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/amanda-kelory-a27a181b0/" target="_blank" rel="noopener">in LinkedIn</a>
+  <!-- SKILLS -->
+  <section class="section wrap" id="skills" data-screen-label="Skills">
+    <div class="section-head reveal">
+      <p class="eyebrow">stack &amp; ferramentas</p>
+      <h2 class="section-title">Do código ao teste.</h2>
+      <p class="section-sub">Tecnologias que uso para tirar ideias do papel — e para garantir que elas funcionem.</p>
+    </div>
+    <div class="skills__grid">
+      <div class="skillcard reveal">
+        <div class="skillcard__head"><h3>Desenvolvimento</h3><span class="skillcard__n">01</span></div>
+        <ul>
+          <li>Java</li><li>Spring Boot</li><li>JPA / Hibernate</li><li>Angular</li><li>TypeScript</li><li>RxJS</li><li>React</li><li>Node.js</li><li>Python</li><li>Flask</li><li>PHP / Laravel</li><li>HTML / CSS / JS</li>
+        </ul>
+      </div>
+      <div class="skillcard reveal">
+        <div class="skillcard__head"><h3>QA &amp; Automação</h3><span class="skillcard__n">02</span></div>
+        <ul>
+          <li>Selenium</li><li>Cypress</li><li>pytest</li><li>Postman</li><li>Testes manuais</li><li>Casos de teste</li><li>CI · GitHub Actions</li>
+        </ul>
+      </div>
+      <div class="skillcard reveal">
+        <div class="skillcard__head"><h3>Dados &amp; Infra</h3><span class="skillcard__n">03</span></div>
+        <ul>
+          <li>MySQL</li><li>MongoDB</li><li>SQLAlchemy</li><li>Docker</li><li>Git &amp; GitHub</li>
+        </ul>
+      </div>
+      <div class="skillcard reveal">
+        <div class="skillcard__head"><h3>Aprendendo agora</h3><span class="skillcard__n">04</span></div>
+        <ul>
+          <li>Quantum</li><li>React Native</li><li>Microservices</li><li>Spring Cloud</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section class="section wrap" id="projetos" data-screen-label="Projetos">
+    <div class="section-head reveal">
+      <p class="eyebrow">06 repositórios</p>
+      <h2 class="section-title">Projetos em órbita.</h2>
+      <p class="section-sub">Seis projetos cobrindo meus focos: automação, desenvolvimento, QA e dados.</p>
+    </div>
+
+    <div class="filters reveal" id="filters">
+      <button class="filter is-active" data-filter="all">Todos</button>
+      <button class="filter" data-filter="dev">Desenvolvimento</button>
+      <button class="filter" data-filter="qa">QA</button>
+      <button class="filter" data-filter="dados">Dados</button>
+      <button class="filter" data-filter="automacao">Automação</button>
+    </div>
+
+    <div class="projects" id="projects">
+      <!-- 1 -->
+      <article class="project reveal" data-cat="automacao qa">
+        <div class="project__top"><span class="project__idx">/01</span><span class="project__foco">Automação</span></div>
+        <h3>bpo-automation-bot</h3>
+        <p>Robô RPA em Python e Selenium que faz login, extrai dados paginados e gera relatório CSV. Page Object Model e OOP.</p>
+        <div class="project__tags"><span>Python</span><span>Selenium</span><span>POM</span></div>
+        <div class="project__links"><a href="https://github.com/Blaackmind/bpo-automation-bot" target="_blank" rel="noopener">Código ↗</a></div>
+      </article>
+      <!-- 2 -->
+      <article class="project reveal" data-cat="dados dev">
+        <div class="project__top"><span class="project__idx">/02</span><span class="project__foco">Dados</span></div>
+        <h3>data-pipeline-mysql</h3>
+        <p>API REST em Flask com pipeline ETL: valida, transforma e persiste no MySQL via SQLAlchemy. Relatório com agregações SQL.</p>
+        <div class="project__tags"><span>Flask</span><span>SQLAlchemy</span><span>MySQL</span></div>
+        <div class="project__links"><a href="https://github.com/Blaackmind/data-pipeline-mysql" target="_blank" rel="noopener">Código ↗</a></div>
+      </article>
+      <!-- 3 -->
+      <article class="project reveal" data-cat="qa">
+        <div class="project__top"><span class="project__idx">/03</span><span class="project__foco">QA</span></div>
+        <h3>qa-test-suite</h3>
+        <p>Suite de testes End-to-End para o TodoMVC com Cypress e Selenium. Page Object Model, fixtures, assertions e pronta para CI.</p>
+        <div class="project__tags"><span>Cypress</span><span>Selenium</span><span>pytest</span></div>
+        <div class="project__links"><a href="https://github.com/Blaackmind/qa-test-suite" target="_blank" rel="noopener">Código ↗</a></div>
+      </article>
+      <!-- 4 -->
+      <article class="project reveal" data-cat="dev">
+        <div class="project__top"><span class="project__idx">/04</span><span class="project__foco">Desenvolvimento</span></div>
+        <h3>spring-crud-api</h3>
+        <p>API REST CRUD em Java e Spring Boot com JPA e Hibernate, validações e tratamento global de erros. Arquitetura em camadas.</p>
+        <div class="project__tags"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
+        <div class="project__links"><a href="https://github.com/Blaackmind/spring-crud-api" target="_blank" rel="noopener">Código ↗</a></div>
+      </article>
+      <!-- 5 -->
+      <article class="project reveal" data-cat="dev dados">
+        <div class="project__top"><span class="project__idx">/05</span><span class="project__foco">Full Stack</span></div>
+        <h3>angular-dashboard</h3>
+        <p>Dashboard em Angular que consome a API do spring-crud-api: cards, gráfico, tabela e filtros. Components, services e HttpClient.</p>
+        <div class="project__tags"><span>Angular</span><span>TypeScript</span><span>RxJS</span></div>
+        <div class="project__links"><a href="https://github.com/Blaackmind/angular-dashboard" target="_blank" rel="noopener">Código ↗</a></div>
+      </article>
+      <!-- 6 -->
+      <article class="project reveal" data-cat="dev">
+        <div class="project__top"><span class="project__idx">/06</span><span class="project__foco">Web</span></div>
+        <h3>bpo-portfolio</h3>
+        <p>Esta página: portfólio responsivo em HTML, CSS e JavaScript, publicado no GitHub Pages, reunindo todos os projetos.</p>
+        <div class="project__tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+        <div class="project__links"><a href="https://github.com/Blaackmind/bpo-portfolio" target="_blank" rel="noopener">Código ↗</a></div>
+      </article>
+    </div>
+    <p class="projects-note reveal">// veja todos os repositórios no meu <a href="https://github.com/Blaackmind?tab=repositories" target="_blank" rel="noopener">GitHub</a>.</p>
+  </section>
+
+  <!-- TRAJETÓRIA -->
+  <section class="section wrap" id="trajetoria" data-screen-label="Trajetória">
+    <div class="section-head reveal">
+      <p class="eyebrow">trajetória</p>
+      <h2 class="section-title">Onde eu estive.</h2>
+      <p class="section-sub">Uma linha do tempo da minha jornada. <span class="tl-edit"></span></p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-when"><span class="dot"></span>2020 — agora</div>
+        <div class="tl-body">
+          <h3>[Fin & Admin Business Analyst ]</h3>
+          <p class="org">IBM · Hortolândia, SP</p>
+          <p>Base em análise financeira, gestão administrativa, indicadores de desempenho e otimização de processos.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-when"><span class="dot"></span>2021- agora</div>
+        <div class="tl-body">
+          <h3>Desenvolvedora Full Stack &amp; QA</h3>
+          <p class="org">[ Autonôma ]</p>
+          <p>Desenvolvimento de aplicações web com Java, Spring Boot e Angular, e automação de testes com Selenium e Cypress.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-when"><span class="dot"></span>Formação</div>
+        <div class="tl-body">
+          <h3>[ Engenharia da Computação / 2030 ]</h3>
+          <p class="org">[ Univesp ]</p>
+          <p>Base em arquitetura de sistemas, lógica computacional, banco de dados e soluções tecnológicas.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="wrap">© <span id="ano"></span> <b>Amanda Kelory</b> · feito com HTML, CSS &amp; JS · hospedado no GitHub Pages </div>
+  <!-- DEPOIMENTOS 
+  <section class="section wrap" id="depoimentos" data-screen-label="Depoimentos">
+    <div class="section-head reveal">
+      <p class="eyebrow">depoimentos</p>
+      <h2 class="section-title">O que dizem por aí.</h2>
+      <p class="section-sub">Espaço para recomendações de colegas e líderes. <span class="tl-edit">// substitua pelos depoimentos reais.</span></p>
+    </div>
+    <div class="quotes">
+      <figure class="quote reveal">
+        <div class="quote__mark">&ldquo;</div>
+        <p></p>
+        <figcaption class="quote__by"><span class="quote__av"></span><span><span class="n">[ Nome ]</span><br /><span class="r">[ Cargo · Empresa ]</span></span></figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <div class="quote__mark">&ldquo;</div>
+        <p></p>
+        <figcaption class="quote__by"><span class="quote__av"></span><span><span class="n">[ Nome ]</span><br /><span class="r">[ Cargo · Empresa ]</span></span></figcaption>
+      </figure>
+    </div>
+  </section>
+-->
+  <!-- CONTATO -->
+  <section class="section wrap contact" id="contato" data-screen-label="Contato">
+    <div class="reveal">
+      <p class="eyebrow" style="justify-content:center;display:flex;">vamos conversar?</p>
+      <h2 class="contact__title">Bora construir<br />algo juntos.</h2>
+      <p class="section-sub" style="margin:0 auto 6px;">Aberta a oportunidades em desenvolvimento, QA, automação e dados.</p>
+      <br />
+      <a href="mailto:amandak.lbastos72@gmail.com" class="contact__mail" id="mailbtn">
+        <span>amandak.lbastos72@gmail.com</span>
+        <span class="contact__copy" id="copyhint">copiar</span>
+      </a>
+      <div class="contact__socials">
+        <a href="https://github.com/Blaackmind" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/amanda-kelory-a27a181b0/" target="_blank" rel="noopener" class="btn">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>© <span id="year"></span> Amanda Kelory · Blaackmind</span>
+      <span>feito com HTML · CSS · JS</span>
+    </div>
   </footer>
 
-  <script>
-    const cv = document.getElementById('stars'), ctx = cv.getContext('2d');
-    let stars = [];
-    function sizeStars(){
-      cv.width = innerWidth; cv.height = innerHeight;
-      const n = Math.min(160, Math.floor(innerWidth*innerHeight/9000));
-      stars = Array.from({length:n}, () => ({
-        x:Math.random()*cv.width, y:Math.random()*cv.height,
-        r:Math.random()*1.4+.2, a:Math.random(), s:Math.random()*.02+.004,
-        c:Math.random()>.7 ? '199,125,255' : '255,255,255'
-      }));
-    }
-    function drawStars(){
-      ctx.clearRect(0,0,cv.width,cv.height);
-      for(const st of stars){
-        st.a += st.s; const alpha = .35 + Math.abs(Math.sin(st.a))*.65;
-        ctx.beginPath(); ctx.arc(st.x,st.y,st.r,0,7);
-        ctx.fillStyle = `rgba(${st.c},${alpha})`; ctx.fill();
-        st.y += .04; if(st.y>cv.height){st.y=0;st.x=Math.random()*cv.width;}
-      }
-      requestAnimationFrame(drawStars);
-    }
-    sizeStars(); drawStars(); addEventListener('resize', sizeStars);
+</div>
 
-    const frases = ['Full Stack Developer','QA & Tester','Automação (RPA)','Análise de Dados','Always learning new tech'];
-    const el = document.getElementById('typed');
-    let fi=0, ci=0, apagando=false;
-    (function type(){
-      const atual = frases[fi];
-      el.textContent = atual.slice(0, ci);
-      if(!apagando && ci < atual.length){ ci++; setTimeout(type,75); }
-      else if(!apagando && ci===atual.length){ apagando=true; setTimeout(type,1400); }
-      else if(apagando && ci>0){ ci--; setTimeout(type,35); }
-      else { apagando=false; fi=(fi+1)%frases.length; setTimeout(type,250); }
-    })();
-
-    const GH = "https://github.com/Blaackmind";
-    const projetos = [
-      { n:"PROJETO 01", nome:"bpo-automation-bot", foco:"Automação · RPA",
-        desc:"Robô Selenium que faz login, extrai dados paginados e gera relatório CSV. Page Object Model + OOP.",
-        stack:["Python","Selenium","POM"], repo:"bpo-automation-bot" },
-      { n:"PROJETO 02", nome:"data-pipeline-mysql", foco:"Dados · ETL",
-        desc:"Mini ETL com API REST: valida, transforma e persiste no MySQL via ORM. Relatório com agregações SQL.",
-        stack:["Flask","SQLAlchemy","MySQL"], repo:"data-pipeline-mysql" },
-      { n:"PROJETO 03", nome:"qa-test-suite", foco:"QA · E2E",
-        desc:"Suite E2E para o TodoMVC com Cypress e Selenium. POM, fixtures, assertions e pronta para CI.",
-        stack:["Cypress","Selenium","pytest"], repo:"qa-test-suite" },
-      { n:"PROJETO 04", nome:"spring-crud-api", foco:"Desenvolvimento",
-        desc:"API REST CRUD em Spring Boot com JPA/Hibernate, validações e tratamento de erros. Arquitetura em camadas.",
-        stack:["Java","Spring Boot","MySQL"], repo:"spring-crud-api" },
-      { n:"PROJETO 05", nome:"angular-dashboard", foco:"Full Stack",
-        desc:"Dashboard Angular consumindo a API: cards, gráfico, tabela e filtros. Components, services e HttpClient.",
-        stack:["Angular","TypeScript","RxJS"], repo:"angular-dashboard" },
-      { n:"PROJETO 06", nome:"bpo-portfolio", foco:"Apresentação",
-        desc:"Esta página: portfólio responsivo com tema cósmico, publicado no GitHub Pages reunindo todos os projetos.",
-        stack:["HTML","CSS","JS"], repo:"bpo-portfolio" },
-    ];
-    document.getElementById("grid").innerHTML = projetos.map(p => `
-      <article class="proj reveal">
-        <span class="num">${p.n}</span>
-        <div class="focus">${p.foco}</div>
-        <h3>${p.nome}</h3>
-        <p>${p.desc}</p>
-        <div class="stack">${p.stack.map(s=>`<span>${s}</span>`).join("")}</div>
-        <a class="repo" href="${GH}/${p.repo}" target="_blank" rel="noopener">ver repositório -></a>
-      </article>`).join("");
-
-    const outros = [
-      { nome:"EasyMovie", lang:"JavaScript · API TMDB", repo:"EasyMovie",
-        desc:"App mobile de filmes integrado à API do TMDB. projeto em destaque." },
-      { nome:"dashboard_enki", lang:"Laravel · Blade", repo:"dashboard_enki",
-        desc:"Dashboard administrativo ENKI com painel e gestão de dados." },
-      { nome:"Belle_Am-", lang:"HTML · CSS", repo:"Belle_Am-",
-        desc:"Site para controle de vendas de uma loja de presentes." },
-      { nome:"buscaCEP", lang:"JavaScript · API ViaCEP", repo:"buscaCEP",
-        desc:"Busca de endereços por CEP consumindo a API ViaCEP." },
-      { nome:"Jogo-da-Memoria-JS", lang:"JavaScript", repo:"Jogo-da-Memoria-JS",
-        desc:"Jogo da memória feito em JavaScript puro, com lógica de pares." },
-      { nome:"ConsultaUsers", lang:"JavaScript · JSON", repo:"ConsultaUsers",
-        desc:"Sistema de gestão de usuários integrado a dados em JSON." },
-      { nome:"Cadastro-Simples", lang:"PHP · Laravel", repo:"Cadastro-Simples",
-        desc:"CRUD de produtos usando Laravel e migrations." },
-      { nome:"PadariaPaobao", lang:"JavaScript · JSON", repo:"PadariaPaobao",
-        desc:"Gestão de produtos de uma padaria integrada a JSON." },
-    ];
-    document.getElementById("minigrid").innerHTML = outros.map(p => `
-      <a class="mini reveal" href="${GH}/${p.repo}" target="_blank" rel="noopener">
-        <div class="top"><span class="dot"></span><h4>${p.nome}</h4></div>
-        <p>${p.desc}</p>
-        <span class="lang">${p.lang}</span>
-      </a>`).join("");
-
-    const io = new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
-
-    document.getElementById("ano").textContent = new Date().getFullYear();
-  </script>
+<!-- Painel de Tweaks (React, isolado) -->
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="site.js"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks.jsx"></script>
 </body>
 </html>
